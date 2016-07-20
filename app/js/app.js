@@ -8,6 +8,7 @@
 				console.log('Your todos list is empty');
 			}
 			else {
+				console.log('My Todos: ');
 				for (var i=0; i<this.todos.length; i++) {
 					var todo = this.todos[i];
 					var completed = this.todos[i].completed === true ? '[X]' : '[ ]';
@@ -57,11 +58,14 @@
 		}
 	};
 
-	var displayButton = document.getElementById('display-btn');
-
-	displayButton.addEventListener('click', function() {
-		todoList.displayTodos();
-	});
+	var handlers = {
+		displayTodos: function() {
+			todoList.displayTodos();
+		},
+		toggleAll: function() {
+			todoList.toggleAll();
+		}
+	};
 	// Your starting point. Enjoy the ride!
 
 })(window);
