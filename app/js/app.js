@@ -1,6 +1,5 @@
 (function (window) {
-	'use strict';
-
+	
 	var todoList = {
 		todos: [],
 		addTodo: function(todoText) {
@@ -46,16 +45,16 @@
 			});
 		},
 		addTodo: function() {
-			var addTodoTextInput = document.getElementById('addTodoTextInput');
-			todoList.addTodo(addTodoTextInput.value);
-			this.clearInput([addTodoTextInput]);
+			var addInputText = document.getElementById('add_input--text');
+			todoList.addTodo(addInputText.value);
+			this.clearInput([addInputText]);
 			view.displayTodoList();
 		},
 		changeTodo: function() {
-			var changeTodPositionInput = document.getElementById('changeTodoPositionInput');
-			var changeTodoTextInput = document.getElementById('changeTodoTextInput');
-			todoList.changeTodo(changeTodPositionInput.valueAsNumber, changeTodoTextInput.value);
-			this.clearInput([changeTodPositionInput, changeTodoTextInput]);
+			var changeInputPosition = document.getElementById('change_input--position');
+			var changeInputText = document.getElementById('change_input--text');
+			todoList.changeTodo(changeInputPosition.valueAsNumber, changeInputText.value);
+			this.clearInput([changeInputPosition, changeInputText]);
 			view.displayTodoList();
 		},
 		deleteTodo: function(position) {
@@ -63,9 +62,9 @@
 			view.displayTodoList();
 		},
 		toggleCompleted: function() {
-			var toggelCompletedPositionInput = document.getElementById('toggleCompletedPositionInput');
-			todoList.toggleCompleted(toggelCompletedPositionInput.valueAsNumber);
-			this.clearInput([toggelCompletedPositionInput]);
+			var toggelCompletetInputPosition = document.getElementById('toggle-completed_input--position');
+			todoList.toggleCompleted(toggelCompletetInputPosition.valueAsNumber);
+			this.clearInput([toggelCompletetInputPosition]);
 			view.displayTodoList();
 		},
 		toggleAll: function() {
@@ -90,22 +89,32 @@
 		createDeleteButton: function() {
 			var deleteButton = document.createElement('button');
 			deleteButton.textContent = 'Delete';
-			deleteButton.className = 'delete-button';
+			deleteButton.className = 'delete_button';
 			return deleteButton;
 		},
 		setupEventListeners: function() {
-			var todosUl = document.querySelector('ul');
+			var todosUl = document.getElementById('todo-list');
 			todosUl.addEventListener('click', function(event) {
 				var elementClicked = event.target;
-				if(elementClicked.className === 'delete-button') {
+				if(elementClicked.className === 'delete_button') {
 					var position = parseInt(elementClicked.parentNode);
 					handlers.deleteTodo(position);
+				}
+			});
+			var main = document.querySelector('main');
+			main.addEventListener('click', function(event) {
+				var elementClicked = event.target;
+				switch (elementClicked.id) {
+					case 'add_button'              : handlers.addTodo(); break;
+					case 'change_button'           : handlers.changeTodo(); break;
+					case 'delete_button'           : handlers.deleteTodo(); break;
+					case 'toggle-completed_button' : handlers.toggleCompleted(); break;
+					default                        : break;
 				}
 			});
 		}
 	}
 
 	view.setupEventListeners();
-	// Your starting point. Enjoy the ride!
 
 })(window);

@@ -2,41 +2,45 @@
 <html>
 
   <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/app.css">
   </head>
 
   <body>
+  <header>
     <h1>Todo List</h1>
+  </header>
     
+  <main>
+
     <div>
-      <button onclick="handlers.toggleAll()">Toggle All</button>
+      <button id="toggle-all-button">Toggle All</button>
     </div>
     
     <div>
-      <input id="addTodoTextInput" type="text">
-      <button onclick="handlers.addTodo()">Add</button>
-    </div>
-    
-    
-    <div>
-      <button onclick="handlers.changeTodo()">Change Todo</button>
-      <input id="changeTodoPositionInput" type="number">
-      <input id="changeTodoTextInput" type="text">
+      <input id="add_input--text" type="text">
+      <button id="add_button">Add</button>
     </div>
     
     <div>
-      <button onclick="handlers.deleteTodo()">Delete</button>
-      <input id="deleteTodoPositionInput" type="number">
+      <input id="change_input--position" type="number">
+      <input id="change_input--text" type="text">
+      <button id="change_button">Change Todo</button>
     </div>
     
     <div>
-      <button onclick="handlers.toggleCompleted()">Complete</button>
-      <input id="toggleCompletedPositionInput" type="number">
+      <input id="delete_input--position" type="number">
+      <button id="delete_button">Delete</button>
     </div>
     
-    <ul id="todoList"></ul>
+    <div>
+      <input id="toggle-completed_input--position" type="number">
+      <button id="toggle-completed_button">Complete</button>
+    </div>
+
+    <ul id="todo-list"></ul>
+  </main>
     
-    <script src="script.js"></script>
+    <script src="./js/app.js"></script>
   </body>
 
 </html>
