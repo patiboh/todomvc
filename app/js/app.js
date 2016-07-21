@@ -45,14 +45,14 @@
 			});
 		},
 		addTodo: function() {
-			var addInputText = document.getElementById('add_input--text');
+			var addInputText = document.getElementById('add-input--text');
 			todoList.addTodo(addInputText.value);
 			this.clearInput([addInputText]);
 			view.displayTodoList();
 		},
 		changeTodo: function() {
-			var changeInputPosition = document.getElementById('change_input--position');
-			var changeInputText = document.getElementById('change_input--text');
+			var changeInputPosition = document.getElementById('change-input--position');
+			var changeInputText = document.getElementById('change-input--text');
 			todoList.changeTodo(changeInputPosition.valueAsNumber, changeInputText.value);
 			this.clearInput([changeInputPosition, changeInputText]);
 			view.displayTodoList();
@@ -62,7 +62,7 @@
 			view.displayTodoList();
 		},
 		toggleCompleted: function() {
-			var toggelCompletetInputPosition = document.getElementById('toggle-completed_input--position');
+			var toggelCompletetInputPosition = document.getElementById('toggle-completed-input--position');
 			todoList.toggleCompleted(toggelCompletetInputPosition.valueAsNumber);
 			this.clearInput([toggelCompletetInputPosition]);
 			view.displayTodoList();
@@ -101,14 +101,16 @@
 					handlers.deleteTodo(position);
 				}
 			});
+
 			var main = document.querySelector('main');
 			main.addEventListener('click', function(event) {
 				var elementClicked = event.target;
 				switch (elementClicked.id) {
-					case 'add_button'              : handlers.addTodo(); break;
-					case 'change_button'           : handlers.changeTodo(); break;
-					case 'delete_button'           : handlers.deleteTodo(); break;
-					case 'toggle-completed_button' : handlers.toggleCompleted(); break;
+					case 'add-button'              : handlers.addTodo(); break;
+					case 'change-button'           : handlers.changeTodo(); break;
+					case 'delete-button'           : handlers.deleteTodo(); break;
+					case 'toggle-completed-button' : handlers.toggleCompleted(); break;
+					case 'toggle-all-button'       : handlers.toggleAll(); break;
 					default                        : break;
 				}
 			});
